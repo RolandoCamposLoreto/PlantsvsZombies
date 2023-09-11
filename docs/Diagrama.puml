@@ -1,0 +1,102 @@
+class Cerebro
+class Sol 
+class Juego
+class Tienda
+class Nivel
+class Habitacion
+class Puzzle
+class Minijuego
+class Survival
+class Tejado
+class Piscina
+class Jardin
+class JefeFinal
+class Musica
+class Logro
+class Desafio 
+Class Lanzaguisante
+Class Girasol
+Class Nuez
+Class Hielaguisante
+Class Cactus
+Class SetaDeHielo
+Class ColCabeza
+Class Patatapum
+Class GirasolDoble
+Class Hipnoseta
+Class Lanzamaiz
+Class Cacahuete
+Class PlantaCarnivora
+Class NuezMuro
+Class Bumeran
+Class Lanzachile
+Class ZombieComun
+Class ZombiConCubo
+Class ZombiDeportista
+Class ZombiCubil
+Class ZombiBuzo
+Class ZombiPortero
+Class ZombiExcavador
+Class ZombiYeti
+Class ZombiMultiple
+Class ZombiGiga
+Class ZombiZombistein
+Class ZombiCohete
+Class ZombiBobsled
+Class ZombiBungee
+Class ZombiDrZomboss
+
+Juego --* Nivel
+Juego --* Tienda
+Juego --* Sol
+Juego --o Cerebro
+Juego --o Musica
+Juego --o Logro
+Juego --o Desafio
+
+Niveles --o Habitacion
+Niveles --o Puzzle
+Niveles --o Minijuego
+Niveles --o Survival
+
+Habitaciones --|> Jardin
+Habitaciones --|> Tejado
+Habitaciones --|> Piscina
+Habitaciones --* JefeFinal
+
+Tienda --* Planta
+Tienda --* Zombie
+Tienda --* Sol
+
+Plantas --* Lanzaguisante
+Plantas --* Girasol
+Plantas --* Nuez
+Plantas --* Hielaguisante
+Plantas --* Cactus
+Plantas --* SetaDeHielo
+Plantas --* ColCabeza
+Plantas --* Patatapum
+Plantas --* GirasolDoble
+Plantas --* Hipnoseta
+Plantas --* Lanzamaiz
+Plantas --* Cacahuete
+Plantas --* PlantaCarnivora
+Plantas --* NuezMuro
+Plantas --* Bumeran
+Plantas --* Lanzachile
+
+Zombies --* ZombieComun
+Zombies --* ZombiConCubo
+Zombies --* ZombiDeportista
+Zombies --* ZombiCubil
+Zombies --* ZombiBuzo
+Zombies --* ZombiPortero
+Zombies --* ZombiExcavador
+Zombies --* ZombiYeti
+Zombies --* ZombiMultiple
+Zombies --* ZombiGiga
+Zombies --* ZombiZombistein
+Zombies --* ZombiCohete
+Zombies --* ZombiBobsled
+Zombies --* ZombiBungee
+Zombies --* ZombiDrZomboss
