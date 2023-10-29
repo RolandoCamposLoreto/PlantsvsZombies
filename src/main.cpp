@@ -1,53 +1,69 @@
-#include <iostream>
-#include <Mascota.hpp>
+#include <ncurses.h>
+#include <list>
+#include <ZombieComun.hpp>
+#include <Lanzaguisante.hpp>
+#include <Dibujo.hpp>
+#include <Actualizable.hpp>
 
 int main(int argc, char const *argv[])
 {
-    Mascota m1;
-    Mascota m2;
+    initscr(); // Inicializa la biblioteca ncurses
+    noecho();  // No mostrar las teclas presionadas
+    cbreak();  // Desactiva el búfer de línea
+    keypad(stdscr, TRUE); // Habilita el uso de teclas especiales como flechas
 
-    std::cout << "Inicio del Programa" << std::endl;
+    ZombieComun* zombie1 = new ZombieComun(200, 0); // Agrega un ZombieComun
+    ZombieComun* zombie2 = new ZombieComun(300, 0); // Agrega otro ZombieComun
+    Lanzaguisante* lanzaguisante = new Lanzaguisante();
 
-    //m1.Comer();
-    //m2.Comer();
+    list<Dibujo*> dibujos;
+    dibujos.push_back(zombie1);
+    dibujos.push_back(zombie2);
+    dibujos.push_back(lanzaguisante);
 
-    std::cout << "tipos de datos" << std::endl;
-    std::cout << "int" << sizeof(int) << std::endl;
-    std::cout << "char" << sizeof(char) << std::endl;
-    std::cout << "bool" << sizeof(bool) << std::endl;
-    std::cout << "float" << sizeof(float) << std::endl;
-    std::cout << "double" << sizeof(double) << std::endl;
-    std::cout << "Mascota " << sizeof(Mascota) << std::endl;
-    std::cout << "Direcciones de memoria" << std::endl;
-    int a = 4;
-    std::cout << "tamaño: " << sizeof(a) << std::endl;
-    std::cout << "contenido:" << a << std::endl;
-    std::cout << "direccion:" << &a << std::endl;
+    list<Actualizable*> actualizables;
+    actualizables.push_back(zombie1);
+    actualizables.push_back(zombie2);
 
-    void *puntero = malloc(32);
+    while (true)
+    {
+        int Key = getch();
+        if (Key == 'q' || Key == 'Q')
+        {
+            break; // Salir del juego
+        }
 
-    //std::cout << std::endl << std::endl;
-    std::cout << "Direcciones de memoria" << std::endl;
-    std::cout << "size of: " << sizeof(puntero) << std::endl;
-    std::cout << "puntero1" << puntero << std::endl;
-    std::cout << "puntero2" << &puntero << std::endl;
-    
-    free(puntero);
+        if (Key == 'w' || Key == KEY_UP) // Mover hacia arriba
+        {
+            zombie1->MoverArriba();
+        }
+        if (Key == 's' || Key == KEY_DOWN) // Mover hacia abajo
+        {
+            zombie1->MoverAbajo();
+        }
+        if (Key == 'a' || Key == KEY_LEFT) // Mover a la izquierda
+        {
+            zombie1->MoverIzquierda();
+        }
+        if (Key == 'd' || Key == KEY_RIGHT) // Mover a la derecha
+        {
+            zombie1->MoverDerecha();
+        }
+        if (Key == 'l')
+        {
+            lanzaguisante->Disparar();
+        }
+        if (Key == 'p')
+        {
+            Guisante->CambiarDireccion();
+        }
 
-    // C - Memoria dinamica
-    std::cout << "Mascota en C++: " << std::endl;
-    Mascota* mascotaC = (Mascota*) malloc(sizeof(Mascota));
-    mascotaC->Inicializar();
-    mascotaC->DecirNombre();
-    mascotaC->Destruir();
-    free(mascotaC);
+        ventana.Actualizar(actualizables);
+        ventana.Dibujar(dibujos);
+    }
 
-    //- - - - - - - - - - - - - - - - - - - - - - - -
-    // C++
-    std::cout << "Mascota en C++: " << std::endl;
-    Mascota* mascotaCPP =new Mascota();
-    mascotaCPP->DecirNombre();
-    delete mascotaCPP;
+    endwin(); // Finaliza la biblioteca ncurses
 
     return 0;
 }
+

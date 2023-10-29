@@ -1,8 +1,29 @@
-class Lanzaguisante
+#pragma once
+#include <Dibujo.hpp>
+#include <Actualizable.hpp>
+#include <list>
+
+class Lanzaguisante :  public Dibujo
 {
 private:
-    /* data */
+    int numeroDisparos;
 public:
-    Lanzaguisante(/* args */) {}
+    Lanzaguisante() : Dibujo("Lanzaguisante")
+    {
+            this->numeroDisparos * 3;
+    }
     ~Lanzaguisante() {}
+    void Actualizar (){
+
+    }
+
+    void Recargar(){
+
+    }
+
+    void Disparar(){
+            if(this->numeroDisparos > 0){
+                this->numeroDisparos -= 1;
+            }
+    }
 };

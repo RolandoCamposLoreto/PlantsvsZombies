@@ -1,3 +1,5 @@
+@@startuml
+
 class Cerebro
 class Sol 
 class Juego
@@ -100,3 +102,5 @@ Zombies --* ZombiCohete
 Zombies --* ZombiBobsled
 Zombies --* ZombiBungee
 Zombies --* ZombiDrZomboss
+
+@@enduml
